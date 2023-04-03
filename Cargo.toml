@@ -12,6 +12,9 @@ license = "MIT"
 peg-runtime = { version = "0.8.1", optional = true }
 serde = { version = "1.0.159", optional = true }
 
+[dev-dependencies]
+peg = "0.8.1"
+
 [features]
 default = ["std"]
 serde = ["dep:serde"]
