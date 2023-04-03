@@ -9,6 +9,7 @@ authors = ["Patrick Elsen <pelsen@xfbs.net>"]
 license = "MIT"
 
 [dependencies]
+peg-runtime = { version = "0.8.1", optional = true }
 serde = { version = "1.0.159", optional = true }
 
 [features]
@@ -16,3 +17,4 @@ default = ["std"]
 serde = ["dep:serde"]
 std = []
 alloc = []
+peg = ["dep:peg-runtime"]
