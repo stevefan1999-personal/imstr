@@ -8,15 +8,22 @@ repository = "https://github.com/xfbs/imstr"
 authors = ["Patrick Elsen <pelsen@xfbs.net>"]
 license = "MIT"
 
+[[bench]]
+name = "bench"
+harness = false
+
 [dependencies]
 peg-runtime = { git = "https://github.com/stevefan1999-personal/rust-peg", branch = "patch-no-std-runtime", version = "0.8.0", default-features = false, optional = true }
 serde = { version = "1.0.159", optional = true }
 
-[dev-dependencies]
-peg = { git = "https://github.com/stevefan1999-personal/rust-peg", branch = "patch-no-std-runtime", version = "0.8.0", default-features = false }
-
 [features]
 default = ["std"]
+# enable serde integration (serialize and deserialize ImString)
 serde = ["dep:serde"]
+# enable peg integration (parse ImString)
+peg = ["dep:peg-runtime"]
 std = ["peg-runtime?/std", "peg/std"]
-peg = ["peg-runtime"]
+
+[dev-dependencies]
+criterion = "0.4.0"
+peg = { git = "https://github.com/stevefan1999-personal/rust-peg", branch = "patch-no-std-runtime", version = "0.8.0", default-features = false }
