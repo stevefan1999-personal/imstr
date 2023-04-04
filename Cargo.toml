@@ -9,15 +9,14 @@ authors = ["Patrick Elsen <pelsen@xfbs.net>"]
 license = "MIT"
 
 [dependencies]
-peg-runtime = { version = "0.8.1", optional = true }
+peg-runtime = { git = "https://github.com/stevefan1999-personal/rust-peg", branch = "patch-no-std-runtime", version = "0.8.0", default-features = false, optional = true }
 serde = { version = "1.0.159", optional = true }
 
 [dev-dependencies]
-peg = "0.8.1"
+peg = { git = "https://github.com/stevefan1999-personal/rust-peg", branch = "patch-no-std-runtime", version = "0.8.0", default-features = false }
 
 [features]
 default = ["std"]
 serde = ["dep:serde"]
-std = []
-alloc = []
-peg = ["dep:peg-runtime"]
+std = ["peg-runtime?/std", "peg/std"]
+peg = ["peg-runtime"]
